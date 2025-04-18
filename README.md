@@ -1,2 +1,2 @@
-# jandan-slideshow
-Tampermonkey script for Jandan image slideshow
+# Jandan-Script
+Tampermonkey script for Jandan image script
