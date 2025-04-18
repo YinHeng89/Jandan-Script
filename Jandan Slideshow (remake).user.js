@@ -2,7 +2,7 @@
 // @name         Jandan Slideshow (remake)
 // @namespace    https://jandan.net/
 // @version      1.0.4
-// @description  Slideshow for Jandan images.
+// @description  给煎蛋无聊图添加一个幻灯片浏览，默认按i可以切换显示
 // @author       YinHeng (Fixed by Qwen)
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.2/babel.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.js
