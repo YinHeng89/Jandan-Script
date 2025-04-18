@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jandan Fancy Viewer (remake)
 // @namespace    https://windrunner.me/
-// @version      1.0.1
+// @version      1.0.2
 // @description  使用 Fancybox 查看煎蛋评论区大图，支持分页动态加载
 // @author       YinHeng (Fixed by Qwen)
 // @match        http*://*.jandan.net/*
@@ -10,8 +10,8 @@
 // @require      https://code.jquery.com/jquery-3.2.1.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js
 // @resource     fancyboxCSS https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css
-// @updateURL    https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Fancy Viewer (remake).js
-// @downloadURL  https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Fancy Viewer (remake).js
+// @updateURL    https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Fancy Viewer (remake).user.js
+// @downloadURL  https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Fancy Viewer (remake).user.js
 
 // ==/UserScript==
 
