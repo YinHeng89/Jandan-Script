@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Jandan Slideshow (remake)
 // @namespace    https://jandan.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Slideshow for Jandan images.
 // @author       YinHeng (Fixed by Qwen)
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.2/babel.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.js
 // @match        http*://jandan.net/*
-// @updateURL    https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Slideshow (remake).js
-// @downloadURL  https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Slideshow (remake).js
+// @updateURL    https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Slideshow (remake).user.js
+// @downloadURL  https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Slideshow (remake).user.js
 
 // ==/UserScript==
 
