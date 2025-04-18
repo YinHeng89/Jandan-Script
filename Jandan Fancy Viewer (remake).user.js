@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Jandan Fancy Viewer (remake)
-// @namespace    https://windrunner.me/
+// @namespace    https://jandan.net/
 // @version      1.0.2
 // @description  使用 Fancybox 查看煎蛋评论区大图，支持分页动态加载
 // @author       YinHeng (Fixed by Qwen)
