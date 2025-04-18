@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jandan Slideshow (remake)
 // @namespace    https://jandan.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Slideshow for Jandan images.
 // @author       YinHeng (Fixed by Qwen)
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.2/babel.js
@@ -167,7 +167,7 @@ var inline_src = (<><![CDATA[
             // 创建切换按钮
             const toggleSlideBtn = document.createElement('button');
             toggleSlideBtn.className = 'toggle-slide';
-            toggleSlideBtn.innerText = 'Toggle Slide';
+            toggleSlideBtn.innerText = '查看幻灯片';
             toggleSlideBtn.onclick = () => {
                 if (slideContainer.style.display === 'none') {
                     slideContainer.style.display = 'block';
