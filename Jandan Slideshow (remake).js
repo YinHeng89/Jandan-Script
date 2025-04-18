@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jandan Slideshow (remake)
 // @namespace    https://jandan.net/
-// @version      1.0.2
+// @version      1.0.3
 // @description  Slideshow for Jandan images.
 // @author       YinHeng (Fixed by Qwen)
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.2/babel.js
@@ -109,7 +109,7 @@ var inline_src = (<><![CDATA[
                         clearInterval(interval);
                         resolve(imageContainers);
                     }
-                }, 500); // 每 500ms 检查一次
+                }, 100); // 每 100ms 检查一次
             });
         }
         // 添加请求拦截器
