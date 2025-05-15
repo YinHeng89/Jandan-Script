@@ -1,21 +1,20 @@
 // ==UserScript==
-// @name         Jandan Fancy Viewer (remake)
+// @name         Jandan Fancy Viewer (remake) - video supported
 // @namespace    https://jandan.net/
-// @version      1.0.4
-// @description  使用 Fancybox 查看煎蛋评论区大图，支持分页动态加载
+// @version      1.0.5
+// @description  使用 Fancybox 查看煎蛋评论区大图，支持分页动态加载和 mp4 视频预览
 // @author       YinHeng (Fixed by Qwen)
 // @match        http*://*.jandan.net/*
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @require      https://code.jquery.com/jquery-3.2.1.min.js
-// @require      https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js
-// @resource     fancyboxCSS https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css
+// @require      https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
+// @resource     fancyboxCSS https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
 // @updateURL    https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Fancy Viewer (remake).user.js
 // @downloadURL  https://raw.githubusercontent.com/YinHeng89/Jandan-Script/main/Jandan Fancy Viewer (remake).user.js
-
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     // 注入 Fancybox 样式
@@ -27,26 +26,28 @@
     function initFancybox() {
         const viewOrigImgLinks = document.querySelectorAll('.img-container a.img-link:not([data-fancybox])');
 
-        if (viewOrigImgLinks.length === 0) {
-            console.warn('No new image links found.');
-            return;
-        }
+        if (viewOrigImgLinks.length === 0) return;
 
         viewOrigImgLinks.forEach((link) => {
-            const origSrc = link.href;
-            if (!origSrc || !/^https?:\/\//.test(origSrc)) {
-                console.warn('Invalid image link:', origSrc);
-                return;
-            }
-            link.setAttribute('data-src', origSrc); // 存储原始链接
-            link.href = '#'; // 设置占位符
+            let origSrc = link.dataset.src;
+            if (!origSrc || !/^https?:\/\//.test(origSrc)) return;
+
+            // 设置基本属性
+            link.href = '#';
             link.setAttribute('data-fancybox', 'gallery');
             link.setAttribute('data-caption', origSrc);
+            link.setAttribute('data-src', origSrc);
+
+            // 根据文件类型设置 Fancybox type
+            if (origSrc.endsWith('.mp4')) {
+                link.setAttribute('data-type', 'video');
+            } else if (origSrc.match(/\.(jpe?g|png|gif|webp)$/i)) {
+                link.setAttribute('data-type', 'image');
+            }
         });
 
-        // 配置 Fancybox
-        const config = {
-            arrows: false,
+        // 初始化 Fancybox
+        $('.img-container a.img-link').fancybox({
             buttons: [
                 'slideShow',
                 'fullScreen',
@@ -54,32 +55,25 @@
                 'download',
                 'zoom',
                 'close'
-            ],
-            beforeLoad: function(instance, current) {
-                current.src = current.opts.$orig.attr('data-src'); // 动态加载图片
-            }
-        };
-
-        // 初始化 Fancybox
-        $('.img-container a.img-link').fancybox(config);
+            ]
+        });
     }
 
     // 初始调用
     initFancybox();
 
-    // 使用 MutationObserver 监听 DOM 变化
+    // 监听动态加载内容（分页）
     const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.addedNodes.length > 0) {
-                // 检测到新节点被添加，重新初始化 Fancybox
+        for (const mutation of mutations) {
+            if ([...mutation.addedNodes].some(n => n.nodeType === 1 && n.querySelector?.('.img-container a.img-link'))) {
                 initFancybox();
+                break;
             }
-        });
+        }
     });
 
-    // 配置观察器，监听整个文档的变化
     observer.observe(document.body, {
-        childList: true, // 监听子节点的变化
-        subtree: true    // 监听所有后代节点的变化
+        childList: true,
+        subtree: true
     });
 })();
