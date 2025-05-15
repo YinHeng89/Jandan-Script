@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Jandan Fancy Viewer (remake) - video supported
+// @name         Jandan Fancy Viewer (remake)
 // @namespace    https://jandan.net/
 // @version      1.0.5
 // @description  使用 Fancybox 查看煎蛋评论区大图，支持分页动态加载和 mp4 视频预览
